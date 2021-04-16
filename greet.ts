@@ -30,6 +30,20 @@ class GreetInShona implements GreetIn {
   }
 }
 
+class Language implements GreetIn{
+  greet(name: string): string {
+     
+    let greetMap = new Map<Language, GreetIn>();  
+greetMap.set(Language.afr, new GreetInXhosa());
+greetMap.set(Language.eng, new GreetInEnglish());
+
+let greeter = new Greeter(greetMap);
+
+  }
+
+
+}
+
 
 
 class greetedCounter implements UserGreetCounter {
@@ -70,3 +84,21 @@ class greetedCounter implements UserGreetCounter {
 
 }
 
+
+
+export class Greeter {
+  // create a Map that has a languages enum as a key and a GreetIn interface instance as a value
+  private greetLanguages:Map<Language, GreetIn>
+
+  constructor(greetLanguages:Map<Language, GreetIn>){
+      this.greetLanguages = greetLanguages;
+  }
+  
+  greet(name: string, chosenLanguage:Language) {
+      let greetIn = this.greetLanguages.get(chosenLanguage);
+      if (greetIn) {
+          return greetIn.greet(name);
+      }
+      return "";
+  }
+}
