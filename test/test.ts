@@ -31,13 +31,13 @@ describe('GreetIn Function', function() {
     });
 
     it('should greet Thimna in English', function() {
-        let greetInEnglish = new GreetInEnglish();
-        assert.equal("Hello, Thimna", greetInEnglish.greet("Thimna"))
+        let greetInShona = new GreetInShona();
+        assert.equal("Moro, Thimna", greetInShona.greet("Thimna"))
      });
 
      it('should greet Afro in English', function() {
-        let greetInEnglish = new GreetInEnglish();
-        assert.equal("Hello, Afro", greetInEnglish.greet("Afro"))
+        let greetInXhosa = new GreetInXhosa();
+        assert.equal("Molo, Afro", greetInXhosa.greet("Afro"))
      });
 
 });

@@ -1,5 +1,5 @@
 import Person from './person';
-export { greet, GreetInXhosa, GreetInEnglish, GreetInShona, greetedCounter }
+export { greet, GreetInXhosa, GreetInEnglish, GreetInShona, greetedCounter,NoDuplicates }
 
 
 
@@ -30,19 +30,29 @@ class GreetInShona implements GreetIn {
   }
 }
 
-class Language implements GreetIn{
-  greet(name: string): string {
+enum Language {
+
+  eng = "Hello" ,
+  xhs = "Molo" ,
+  shn = "Shona"
+}
+   
+
+class NoDuplicates implements GreetIn {
+
+  greet(name: string): any {
      
-    let greetMap = new Map<Language, GreetIn>();  
-greetMap.set(Language.afr, new GreetInXhosa());
-greetMap.set(Language.eng, new GreetInEnglish());
+   let greetMap = new Map<Language, GreetIn>();  
+   greetMap.set(Language.xhs, new GreetInXhosa());
+   greetMap.set(Language.eng, new GreetInEnglish());
+   greetMap.set(Language.shn, new GreetInShona());
 
 let greeter = new Greeter(greetMap);
 
   }
 
-
 }
+
 
 
 
